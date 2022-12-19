@@ -13,7 +13,19 @@ public class TransactionUsecase {
         return this.repo.geTransactions();
     }
 
-    public void createTransaction(Transaction transaction) throws SQLException {
+    public void createTransaction(Transaction transaction) throws Exception {
+        if (transaction.customerName.equals("")) {
+            throw new Exception("Customer name cannot be empty");
+        }
+
+        if (transaction.items.length <= 0) {
+            throw new Exception("Transaction items cannot be empty");
+        }
+
+        if (transaction.money <= 0) {
+            throw new Exception("Money cannot be empty");
+        }
+
         this.repo.createTransaction(transaction);
     }
 }

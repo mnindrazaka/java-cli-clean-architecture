@@ -13,7 +13,15 @@ public class ProductUsecase {
         return this.repo.geProducts();
     }
 
-    public void createProduct(Product product) throws SQLException {
+    public void createProduct(Product product) throws Exception {
+        if (product.name.equals("")) {
+            throw new Exception("Product name cannot be empty");
+        }
+
+        if (product.price <= 0) {
+            throw new Exception("Product price cannot be empty");
+        }
+
         this.repo.createProduct(product);
     }
 }

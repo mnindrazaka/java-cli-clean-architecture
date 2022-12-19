@@ -77,7 +77,7 @@ public class TransactionHandler {
             System.out.println("The change is Rp." + transaction.getChange());
 
             this.transactionUsecase.createTransaction(transaction);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println("Failed to create transaction : " + e.getMessage());
         }
     }
